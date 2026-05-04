@@ -1956,6 +1956,8 @@ impl<'db, 'ast> TypeInferenceBuilder<'db, 'ast> {
         loop_header_kind: &LoopHeaderDefinitionKind<'db>,
         definition: Definition<'db>,
     ) {
+        // These cutoffs were chosen by benchmarking real isort to keep loop analysis
+        // overhead minimal while preserving diagnostics.
         const MAX_EXACT_LOOP_HEADER_BINDINGS: usize = 128;
         const MAX_EXACT_LOOP_HEADER_REACHABILITY_NODES: usize = 2688;
 
